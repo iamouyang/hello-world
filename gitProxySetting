@@ -11,3 +11,25 @@ git config --global --unset http.proxy
 Finally, to check the currently set proxy:
 
 git config --global --get http.proxy
+
+
+Set 'all_proxy' environment variable for your user. Required by curl.
+
+export all_proxy=http://DOMAIN\proxyuser:proxypwd@proxy.server.com:8080
+
+Set 'https_proxy' environment variable for your user. Required by curl.
+
+export https_proxy=http://DOMAIN\proxyuser:proxypwd@proxy.server.com:8080
+
+I am not sure if this has any impact. But I did this and it worked:
+
+git config --global http.sslverify false
+
+Use https:// for cloning
+
+git clone https://github.com/project/project.git
+
+Note-1: Do not use http://. Using that can give the below error. It can be resolved by using https://.
+
+ error: RPC failed; result=56, HTTP code = 301
+Note-2: Avoid having @ in your password. Can use $ though.
